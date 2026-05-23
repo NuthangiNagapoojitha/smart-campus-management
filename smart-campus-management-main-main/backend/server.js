@@ -16,16 +16,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:5173",
 ];
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (e.g. mobile / curl) and allowed origins
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: "*"
 }));
 
 app.use(express.json());
